@@ -1,4 +1,4 @@
-# Rsync Folders
+# Rsync Folders for Alfred
 Shadow a folder to another folder via rsync
 
 ## Rsync shows two options:

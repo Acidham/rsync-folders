@@ -38,7 +38,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>E2B8A1D8-FADD-4C77-B6A6-6F1F8D95EEBF</string>
+				<string>7237410C-BEE0-45EC-9AA1-1FFDBB456611</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -47,73 +47,11 @@
 				<false/>
 			</dict>
 		</array>
-		<key>8C4F5E36-9258-4027-8F62-426F71582199</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>EE59AEC8-F22B-4CE8-8DF2-A44AD808B074</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>BC3A56C5-F272-44C0-9CE7-E294E87A03BB</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>9FD4665C-E02B-4521-88E2-40A54CA9B6AF</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>8C4F5E36-9258-4027-8F62-426F71582199</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>BC3A56C5-F272-44C0-9CE7-E294E87A03BB</key>
+		<key>7237410C-BEE0-45EC-9AA1-1FFDBB456611</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
 				<string>18A8BEB2-76E9-4C6B-9F76-B7C0952A20C3</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>E2B8A1D8-FADD-4C77-B6A6-6F1F8D95EEBF</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>18A8BEB2-76E9-4C6B-9F76-B7C0952A20C3</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>EE59AEC8-F22B-4CE8-8DF2-A44AD808B074</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>E2B8A1D8-FADD-4C77-B6A6-6F1F8D95EEBF</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -136,50 +74,13 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttrimmode</key>
-				<integer>1</integer>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>escaping</key>
-				<integer>68</integer>
-				<key>keyword</key>
-				<string>.rsedit</string>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<false/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>2</integer>
-				<key>runningsubtext</key>
-				<string></string>
-				<key>script</key>
-				<string>on run argv	-- Load json File	-- https://github.com/KAYLukas/applescript-json	set theJsonPath to POSIX file ((do shell script "pwd") &amp; "/json.scpt")	set json to load script theJsonPath as alias		-- get data directory and file	do shell script "mkdir -p \"${alfred_workflow_data}\""	set theDataDir to POSIX file (do shell script "echo $alfred_workflow_data")	set theDataFile to theDataDir &amp; ":rsync.txt" as text		-- Clean text read from rsync.txt	set theRawData to {}	try		set theRawData to paragraphs of (read file theDataFile)	on error		log "file empty"	end try		-- read rsync.txt content into theData list	set theData to {}	repeat with theLine in theRawData		if (theLine as text) contains "|" then			set theData to theData &amp; theLine		end if	end repeat		-- Create Script filter output object	set theItems to {}		-- Add item for new entry	set theItem to json's createDictWith({{"title", "New Entry"}})	theItem's setkv("subtitle", "Add new rsync config")	theItem's setkv("arg", "add|0")	theItem's setkv("quicklookurl", "")		set theIcon to json's createDictWith({{"type", "image"}})	theIcon's setkv("path", "add.png")	theItem's setkv("icon", theIcon)		-- Create item for delete item	set end of theItems to theItem	if (count of theData) is greater than 0 then		repeat with theLine in theData			set theDataSet to StringSplit(theLine, "|")			set theID to item 1 of theDataSet			set theName to item 2 of theDataSet			set theSource to item 3 of theDataSet			set theTarget to item 4 of theDataSet						set theItem to json's createDictWith({{"title", "Delete: " &amp; theName}})			theItem's setkv("subtitle", theSource &amp; " → " &amp; theTarget)			theItem's setkv("arg", "del|" &amp; theID)			theItem's setkv("quicklookurl", "")						set theIcon to json's createDictWith({{"type", "image"}})			theIcon's setkv("path", "delete.png")			theItem's setkv("icon", theIcon)						-- no modifiers so far but leave it in case it will be required			(*-- Set Mod for CMD			set theDel to json's createDictWith({{"valid", "true"}})			theDel's setkv("arg", "del|" &amp; theID)			theDel's setkv("subtitle", "Delete rsync command")			set theMod to json's createDictWith({{"cmd", theDel}})						-- Set Mod for ALT			set theDel to json's createDictWith({{"valid", "true"}})		theDel's setkv("arg", "del|" &amp; theID)		theDel's setkv("subtitle", "Delete rsync command")		theMod's setkv("alt", theDel)						theItem's setkv("mods", theMod)*)						-- Add JSON strucutre for Script Object Filter			set end of theItems to theItem		end repeat	end if		-- Create root items object and encode to JSON	set itemDict to json's createDict()	itemDict's setkv("items", theItems)		-- Return Script filter JSON	return json's encode(itemDict)	end run(* ================================================================
-FUNTION: Splits a String with a given delimiter
-RETURNS: List of String  (List)
-==================================================================*)on StringSplit(theString, theDelimiter)	-- save delimiters to restore old settings	set oldDelimiters to AppleScript's text item delimiters	-- set delimiters to delimiter to be used	set AppleScript's text item delimiters to theDelimiter	-- create the array	set theArray to every text item of theString	-- restore the old setting	set AppleScript's text item delimiters to oldDelimiters	-- return the result	return theArrayend StringSplit</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>subtext</key>
-				<string>Add or Delete new folders to sync</string>
-				<key>title</key>
-				<string>RSync Config</string>
-				<key>type</key>
-				<integer>6</integer>
-				<key>withspace</key>
-				<false/>
+				<key>largetypetext</key>
+				<string>{query}</string>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
+			<string>alfred.workflow.output.largetype</string>
 			<key>uid</key>
-			<string>E2B8A1D8-FADD-4C77-B6A6-6F1F8D95EEBF</string>
+			<string>8EDB9386-2EB1-47FB-8905-FD1B868A2066</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -222,32 +123,10 @@ RETURNS: List of String  (List)
 				<key>runningsubtext</key>
 				<string></string>
 				<key>script</key>
-				<string>on run argv
-
-	-- Load json File	-- https://github.com/KAYLukas/applescript-json	set theJsonPath to POSIX file ((do shell script "pwd") &amp; "/json.scpt")	set json to load script theJsonPath as alias
-  	
-	-- get query from input
-	--set theQuery to item 1 of argv
-
-	-- create items for script filter JSON
-	set theItems to {}	
-	-- Create Execute entry in Script Filter list	set theItem to json's createDictWith({{"title", "Execute"}})	theItem's setkv("subtitle", "Rund Rsync")	theItem's setkv("arg", "exec|0")
-	theItem's setkv("match", "Execute")	theItem's setkv("quicklookurl", "")	
-	-- create image for execute command	set theIcon to json's createDictWith({{"type", "image"}})	theIcon's setkv("path", "add.png")	theItem's setkv("icon", theIcon)
-
-	-- add to script filter list
-	set end of theItems to theItem
-
-	-- Config entry in Script Filter list
-	set theItem to json's createDictWith({{"title", "Rsync Config"}})	theItem's setkv("subtitle", "Rund Rsync")	theItem's setkv("arg", "")
-	theItem's setkv("match", "Rsync")	theItem's setkv("quicklookurl", "")		set theIcon to json's createDictWith({{"type", "image"}})	theIcon's setkv("path", "add.png")	theItem's setkv("icon", theIcon)
-
-	set end of theItems to theItem
-	
-	-- Create root items object and encode to JSON	set itemDict to json's createDict()	itemDict's setkv("items", theItems)		return json's encode(itemDict)
-
-  return theQuery
-end run</string>
+				<string>on run argv	-- Load json File	-- https://github.com/KAYLukas/applescript-json	set theJsonPath to POSIX file ((do shell script "pwd") &amp; "/json.scpt")	set json to load script theJsonPath as alias		-- get data directory and file	do shell script "mkdir -p \"${alfred_workflow_data}\""	set theDataDir to POSIX file (do shell script "echo $alfred_workflow_data")	set theDataFile to theDataDir &amp; ":rsync.txt" as text		-- Clean text read from rsync.txt	set theRawData to {}	try		set theRawData to paragraphs of (read file theDataFile)	on error		log "file empty"	end try		-- read rsync.txt content into theData list	set theData to {}	repeat with theLine in theRawData		if (theLine as text) contains "|" then			set theData to theData &amp; theLine		end if	end repeat		-- Create Script filter output object	set theItems to {}		-- Create Execute entry in Script Filter list	set theItem to json's createDictWith({{"title", "Execute"}})	theItem's setkv("subtitle", "Execute Rsync")	theItem's setkv("arg", "exec|0")	theItem's setkv("quicklookurl", "")		-- create image for execute command	set theIcon to json's createDictWith({{"type", "image"}})	theIcon's setkv("path", "execute.png")	theItem's setkv("icon", theIcon)		-- add to script filter list	set end of theItems to theItem		-- Add item for new entry	set theItem to json's createDictWith({{"title", "New Entry"}})	theItem's setkv("subtitle", "Add new rsync config")	theItem's setkv("arg", "add|0")	theItem's setkv("quicklookurl", "")		set theIcon to json's createDictWith({{"type", "image"}})	theIcon's setkv("path", "add.png")	theItem's setkv("icon", theIcon)		-- Create item for delete item	set end of theItems to theItem	if (count of theData) is greater than 0 then		repeat with theLine in theData			set theDataSet to StringSplit(theLine, "|")			set theID to item 1 of theDataSet			set theName to item 2 of theDataSet			set theSource to item 3 of theDataSet			set theTarget to item 4 of theDataSet						set theItem to json's createDictWith({{"title", "Delete: " &amp; theName}})			theItem's setkv("subtitle", theSource &amp; " → " &amp; theTarget)			theItem's setkv("arg", "del|" &amp; theID)			theItem's setkv("quicklookurl", "")						set theIcon to json's createDictWith({{"type", "image"}})			theIcon's setkv("path", "delete.png")			theItem's setkv("icon", theIcon)						-- no modifiers so far but leave it in case it will be required			(*-- Set Mod for CMD			set theDel to json's createDictWith({{"valid", "true"}})			theDel's setkv("arg", "del|" &amp; theID)			theDel's setkv("subtitle", "Delete rsync command")			set theMod to json's createDictWith({{"cmd", theDel}})						-- Set Mod for ALT			set theDel to json's createDictWith({{"valid", "true"}})		theDel's setkv("arg", "del|" &amp; theID)		theDel's setkv("subtitle", "Delete rsync command")		theMod's setkv("alt", theDel)						theItem's setkv("mods", theMod)*)						-- Add JSON strucutre for Script Object Filter			set end of theItems to theItem		end repeat	end if		-- Create root items object and encode to JSON	set itemDict to json's createDict()	itemDict's setkv("items", theItems)		-- Return Script filter JSON	return json's encode(itemDict)	end run(* ================================================================
+FUNTION: Splits a String with a given delimiter
+RETURNS: List of String  (List)
+==================================================================*)on StringSplit(theString, theDelimiter)	-- save delimiters to restore old settings	set oldDelimiters to AppleScript's text item delimiters	-- set delimiters to delimiter to be used	set AppleScript's text item delimiters to theDelimiter	-- create the array	set theArray to every text item of theString	-- restore the old setting	set AppleScript's text item delimiters to oldDelimiters	-- return the result	return theArrayend StringSplit</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -264,47 +143,7 @@ end run</string>
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>9FD4665C-E02B-4521-88E2-40A54CA9B6AF</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>inputstring</key>
-				<string>{query}</string>
-				<key>matchcasesensitive</key>
-				<true/>
-				<key>matchmode</key>
-				<integer>0</integer>
-				<key>matchstring</key>
-				<string></string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.filter</string>
-			<key>uid</key>
-			<string>EE59AEC8-F22B-4CE8-8DF2-A44AD808B074</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.junction</string>
-			<key>uid</key>
-			<string>8C4F5E36-9258-4027-8F62-426F71582199</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>largetypetext</key>
-				<string>{query}</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.largetype</string>
-			<key>uid</key>
-			<string>8EDB9386-2EB1-47FB-8905-FD1B868A2066</string>
+			<string>7237410C-BEE0-45EC-9AA1-1FFDBB456611</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -316,7 +155,7 @@ end run</string>
 				<key>escaping</key>
 				<integer>68</integer>
 				<key>script</key>
-				<string>on run argv	set theQuery to item 1 of argv	set {theAction, theIDtoDelete} to StringSplit(theQuery, "|")		set theDataDir to POSIX file (do shell script "echo $alfred_workflow_data")		set theDataFile to theDataDir &amp; ":rsync.txt" as text	--set theDataFile to "SSD:Users:jjung:Library:Application Support:Alfred 3:Workflow Data:com.apple.alfred.workflow.rsync:rsync.txt"	log theDataFile		set theRawData to {}	try		set theRawData to paragraphs of (read file theDataFile)	on error		log "file empty"	end try		set theData to {}	repeat with theLine in theRawData		if (theLine as text) contains "|" then			set theData to theData &amp; theLine		end if	end repeat		-- DELETE Entry 	if theAction is equal to "del" then		tell application "System Events" to if (exists file theDataFile) then delete file theDataFile		--do shell script ("rm " &amp; "\"" &amp; (POSIX path of theDataFile) &amp; "\"")		repeat with theDataSet in theData			set theD to StringSplit(theDataSet, "|")			set theID to item 1 of theD			if theID is not equal to theIDtoDelete then				set res to writeTextToFile(theDataSet, theDataFile, false)				log "File error: " &amp; res			end if		end repeat		tell application "Alfred 3" to run trigger ".rsedit" in workflow "com.apple.alfred.workflow.rsync" with argument ""		set theOutput to ""	end if		--- ADD Entry	if theAction is equal to "add" then		tell application "System Events"			set theSource to (POSIX path of (choose folder with prompt "Select Source Folder"))			set theTarget to (POSIX path of (choose folder with prompt "Select Target Folder"))			set theName to text returned of (display dialog "Name?" default answer "")		end tell		--do shell script ("rm " &amp; "\"" &amp; (POSIX path of theDataFile) &amp; "\"")		tell application "System Events" to if (exists file theDataFile) then delete file theDataFile		set theLastID to 0		if (count of theData) is greater than 0 then			set theLastLine to the last item of theData			set theLastItems to StringSplit(theLastLine, "|")			set theLastID to item 1 of theLastItems		end if				set theNewID to theLastID + 1		set theLastEntry to (theNewID &amp; "|" &amp; theName &amp; "|" &amp; theSource &amp; "|" &amp; theTarget) as text		set theData to theData &amp; theLastEntry				repeat with theDataSet in theData			set res to writeTextToFile(theDataSet, theDataFile, false)			log "File error: " &amp; res		end repeat						--set res to writeTextToFile(theLastEntry, theDataFile, false)		--log "File error (last): " &amp; res		tell application "Alfred 3" to run trigger ".rsedit" in workflow "com.apple.alfred.workflow.rsync" with argument ""		set theOutput to ""			end if		-- Execute	if theAction is equal to "exec" then		set theOutput to ""		repeat with theLine in theData			set theDataSet to StringSplit(theLine, "|")			set theID to item 1 of theDataSet			set theName to item 2 of theDataSet			set theSource to item 3 of theDataSet			set theTarget to item 4 of theDataSet						set theLastCharacter to ASCII number of (characters -1 thru -1 of theSource)			log "Last char: " &amp; theLastCharacter						if theLastCharacter is equal to 47 then				set theSource to theSource &amp; "*"			else if theLastCharacter is equal to 42 then			else				set theSource to theSource &amp; "/*"			end if						log "Sync: " &amp; theName &amp; " " &amp; theSource &amp; " &gt; " &amp; theTarget						set theRsyncCmd to "rsync -rtvuc " &amp; theSource &amp; " " &amp; theTarget &amp; " --stats | grep \"Number of files transferred\""						set theOutput to theOutput &amp; theName &amp; " - " &amp; (do shell script theRsyncCmd) &amp; "
+				<string>on run argv	set theQuery to item 1 of argv	set {theAction, theIDtoDelete} to StringSplit(theQuery, "|")		set theDataDir to POSIX file (do shell script "echo $alfred_workflow_data")		set theDataFile to theDataDir &amp; ":rsync.txt" as text	log theDataFile		set theRawData to {}	try		set theRawData to paragraphs of (read file theDataFile)	on error		log "file empty"	end try		set theData to {}	repeat with theLine in theRawData		if (theLine as text) contains "|" then			set theData to theData &amp; theLine		end if	end repeat		-- DELETE Entry 	if theAction is equal to "del" then		tell application "System Events" to if (exists file theDataFile) then delete file theDataFile		--do shell script ("rm " &amp; "\"" &amp; (POSIX path of theDataFile) &amp; "\"")		repeat with theDataSet in theData			set theD to StringSplit(theDataSet, "|")			set theID to item 1 of theD			if theID is not equal to theIDtoDelete then				set res to writeTextToFile(theDataSet, theDataFile, false)				log "File error: " &amp; res			end if		end repeat		tell application "Alfred 3" to run trigger ".rsedit" in workflow "com.apple.alfred.workflow.rsync" with argument ""		set theOutput to ""	end if		--- ADD Entry	if theAction is equal to "add" then		tell application "System Events"			set theSource to (POSIX path of (choose folder with prompt "Select Source Folder"))			set theTarget to (POSIX path of (choose folder with prompt "Select Target Folder"))			set theName to text returned of (display dialog "Enter a title for the configuration?" default answer "")		end tell		--do shell script ("rm " &amp; "\"" &amp; (POSIX path of theDataFile) &amp; "\"")		tell application "System Events" to if (exists file theDataFile) then delete file theDataFile		set theLastID to 0		if (count of theData) is greater than 0 then			set theLastLine to the last item of theData			set theLastItems to StringSplit(theLastLine, "|")			set theLastID to item 1 of theLastItems		end if				set theNewID to theLastID + 1		set theLastEntry to (theNewID &amp; "|" &amp; theName &amp; "|" &amp; theSource &amp; "|" &amp; theTarget) as text		set theData to theData &amp; theLastEntry				repeat with theDataSet in theData			set res to writeTextToFile(theDataSet, theDataFile, false)			log "File error: " &amp; res		end repeat						--set res to writeTextToFile(theLastEntry, theDataFile, false)		--log "File error (last): " &amp; res		tell application "Alfred 3" to run trigger ".rsedit" in workflow "com.apple.alfred.workflow.rsync" with argument ""		set theOutput to ""			end if		-- Execute	if theAction is equal to "exec" then		set theOutput to ""		repeat with theLine in theData			set theDataSet to StringSplit(theLine, "|")			set theID to item 1 of theDataSet			set theName to item 2 of theDataSet			set theSource to item 3 of theDataSet			set theTarget to item 4 of theDataSet						set theLastCharacter to ASCII number of (characters -1 thru -1 of theSource)			log "Last char: " &amp; theLastCharacter						if theLastCharacter is equal to 47 then				set theSource to theSource &amp; "*"			else if theLastCharacter is equal to 42 then			else				set theSource to theSource &amp; "/*"			end if						log "Sync: " &amp; theName &amp; " " &amp; theSource &amp; " &gt; " &amp; theTarget						set theRsyncCmd to "rsync -rtvuc --delete-after --ignore-errors " &amp; theSource &amp; " " &amp; theTarget &amp; " --stats | grep \"Number of files transferred\""						set theOutput to theOutput &amp; theName &amp; " - " &amp; (do shell script theRsyncCmd) &amp; "
 "		end repeat	end if		return theOutput	end run(* ================================================================
 FUNTION: Splits a String with a given delimiter
 RETURNS: List of String  (List)
@@ -354,25 +193,6 @@ RETURNS: List of String  (List)
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>inputstring</key>
-				<string>{query}</string>
-				<key>matchcasesensitive</key>
-				<true/>
-				<key>matchmode</key>
-				<integer>0</integer>
-				<key>matchstring</key>
-				<string>exec|0</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.filter</string>
-			<key>uid</key>
-			<string>BC3A56C5-F272-44C0-9CE7-E294E87A03BB</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
 	</array>
 	<key>readme</key>
 	<string>Rsync Folders helps to keep a shadow folder in sync. 
@@ -386,65 +206,37 @@ Rsync shows two options:
 		<key>0B1EEDE7-0E14-4E4D-946B-0A080FD90ABA</key>
 		<dict>
 			<key>xpos</key>
-			<integer>910</integer>
+			<integer>670</integer>
 			<key>ypos</key>
-			<integer>420</integer>
+			<integer>90</integer>
 		</dict>
 		<key>18A8BEB2-76E9-4C6B-9F76-B7C0952A20C3</key>
 		<dict>
 			<key>xpos</key>
-			<integer>740</integer>
+			<integer>500</integer>
 			<key>ypos</key>
-			<integer>390</integer>
+			<integer>60</integer>
 		</dict>
 		<key>466C9EDE-75DE-4BD9-9871-984499110A39</key>
 		<dict>
 			<key>xpos</key>
-			<integer>250</integer>
+			<integer>50</integer>
 			<key>ypos</key>
-			<integer>160</integer>
+			<integer>60</integer>
 		</dict>
-		<key>8C4F5E36-9258-4027-8F62-426F71582199</key>
+		<key>7237410C-BEE0-45EC-9AA1-1FFDBB456611</key>
 		<dict>
 			<key>xpos</key>
 			<integer>250</integer>
 			<key>ypos</key>
-			<integer>320</integer>
+			<integer>60</integer>
 		</dict>
 		<key>8EDB9386-2EB1-47FB-8905-FD1B868A2066</key>
 		<dict>
 			<key>xpos</key>
-			<integer>1000</integer>
+			<integer>760</integer>
 			<key>ypos</key>
-			<integer>390</integer>
-		</dict>
-		<key>9FD4665C-E02B-4521-88E2-40A54CA9B6AF</key>
-		<dict>
-			<key>xpos</key>
-			<integer>80</integer>
-			<key>ypos</key>
-			<integer>290</integer>
-		</dict>
-		<key>BC3A56C5-F272-44C0-9CE7-E294E87A03BB</key>
-		<dict>
-			<key>xpos</key>
-			<integer>330</integer>
-			<key>ypos</key>
-			<integer>420</integer>
-		</dict>
-		<key>E2B8A1D8-FADD-4C77-B6A6-6F1F8D95EEBF</key>
-		<dict>
-			<key>xpos</key>
-			<integer>510</integer>
-			<key>ypos</key>
-			<integer>160</integer>
-		</dict>
-		<key>EE59AEC8-F22B-4CE8-8DF2-A44AD808B074</key>
-		<dict>
-			<key>xpos</key>
-			<integer>330</integer>
-			<key>ypos</key>
-			<integer>300</integer>
+			<integer>60</integer>
 		</dict>
 	</dict>
 	<key>version</key>

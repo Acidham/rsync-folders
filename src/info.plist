@@ -450,6 +450,6 @@ Rsync shows two options:
 	<key>version</key>
 	<string>0.9</string>
 	<key>webaddress</key>
-	<string></string>
+	<string>https://github.com/Acidham/rsync-folders</string>
 </dict>
 </plist>

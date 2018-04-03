@@ -1,6 +1,6 @@
 # Rsync Folders for Alfred
 
-Keep a set of folders in sync with their target folders via rsync. 
+Keep a set of folders in sync with their target folders via rsync
 
 ## Usage
 

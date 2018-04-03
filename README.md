@@ -1,7 +1,10 @@
 # Rsync Folders for Alfred
-Shadow a folder to another folder via rsync
 
-## Rsync shows two options:
+Keep a set of folders in sync with their target folders via rsync. 
 
-1. *Execute*: Rsync configuration which runs all rsync entry from config
-2. *Rsync Configuration*: allows to delete and add new entries
+## Usage
+
+`rsync`:    
+* executes all rsync configurations
+* add a new entry to rsync batch
+* delete an entry from the batch file

@@ -186,40 +186,20 @@
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>127</integer>
-				<key>script</key>
-				<string></string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>9F27EEE0-39D2-42F7-A725-F2D0F30D5355</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
 	</array>
 	<key>readme</key>
-	<string># Rsync Folders for Alfred
+	<string>Rsync Folders for Alfred
+========================
 
-## Rsync provides the following options:
+Rsync Folders is mirroring two folders e.g. it can be helpful to keep Alfred Workflow folder in sync with the local GIT folder. 
 
-&lt;rsync&gt;
+The following options are available:
 
-1. Executes rsync configuration with all rsync entries or the configs one by one (CMD)
-2. New Entries can be added  by browsing folders or by entering the source and target paths
-3. Delete Entries one by one (CMD)</string>
+Usage: `rsync`
+
+1. Executes rsync on *all* rsync entries or the entries one by one.
+2. New Entries can be added by browsing folders or by entering the source and target paths (*New Entry* + `CMD`).
+3. Delete rsync config entries one by one (*Entry* + `CMD`).</string>
 	<key>uidata</key>
 	<dict>
 		<key>0B1EEDE7-0E14-4E4D-946B-0A080FD90ABA</key>
@@ -256,13 +236,6 @@
 			<integer>760</integer>
 			<key>ypos</key>
 			<integer>60</integer>
-		</dict>
-		<key>9F27EEE0-39D2-42F7-A725-F2D0F30D5355</key>
-		<dict>
-			<key>xpos</key>
-			<integer>490</integer>
-			<key>ypos</key>
-			<integer>220</integer>
 		</dict>
 	</dict>
 	<key>version</key>

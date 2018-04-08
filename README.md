@@ -1,9 +1,13 @@
 # Rsync Folders for Alfred
 
-## Rsync provides the following options:
+Rsync Folders is mirroring two folders e.g. it can be helpful to keep Alfred Workflow folder in sync with the local GIT folder. 
 
-`rsync`
+**The following options are available:**
 
-1. Executes rsync configuration with all rsync entries or the configs one by one (CMD)
-2. New Entries can be added  by browsing folders or by entering the source and target paths
-3. Delete Entries one by one (CMD)
+Usage: `rsync`
+
+* Executes rsync on *all* rsync entries or the entries one by one.
+* New Entries can be added by browsing folders or by entering the source and target paths (*New Entry* + `CMD`).
+* Delete rsync config entries one by one (*Entry* + `CMD`).
+
+![](screenshot.png)

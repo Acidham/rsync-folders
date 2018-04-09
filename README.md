@@ -9,5 +9,6 @@ Usage: `rsync`
 * Executes rsync on *all* rsync entries or the entries one by one.
 * New Entries can be added by browsing folders or by entering the source and target paths (*New Entry* + `CMD`).
 * Delete rsync config entries one by one (*Entry* + `CMD`).
+* Edit rsync config (*Entry* + `ALT`)
 
 ![](screenshot.png)

@@ -324,7 +324,7 @@ Usage: `rsync`
 			<key>note</key>
 			<string>OneUpdater</string>
 			<key>xpos</key>
-			<integer>490</integer>
+			<integer>500</integer>
 			<key>ypos</key>
 			<integer>220</integer>
 		</dict>

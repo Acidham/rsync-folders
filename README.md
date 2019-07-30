@@ -4,7 +4,7 @@ Rsync Folders is mirroring two folders e.g. it can be helpful to keep Alfred Wor
 
 **The following options are available:**
 
-Usage: `rsync`
+Usage: `rsync` 
 
 * Executes rsync on *all* rsync entries or the entries one by one.
 * New Entries can be added by browsing folders or by entering the source and target paths (*New Entry* + `CMD`).

@@ -6,9 +6,9 @@ Rsync Folders is mirroring two folders e.g. it can be helpful to keep Alfred Wor
 
 Usage: `rsync` 
 
-* Executes rsync on *all* rsync entries or the entries one by one.
-* New Entries can be added by browsing folders or by entering the source and target paths (*New Entry* + `CMD`).
-* Delete rsync config entries one by one (*Entry* + `CMD`).
-* Edit rsync config (*Entry* + `ALT`)
+* Executes `rsync``on *all* rsync entries or the entries one by one.
+* New Entries can be added in the workflow or via file action
+* Delete rsync config entries.
+* Edit rsync config
 
 ![](screenshot.png)

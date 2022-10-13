@@ -24,7 +24,7 @@ else:
         target = c['target'][-25:]
         wf.setItem(
             title=name,
-            subtitle=f'{source} → {target} (\u21E7 to see full path)',
+            subtitle=f'...{source} → ...{target} (\u21E7 to see full path)',
             arg=f'{uid}|{name}|||DELETE',
             quicklookurl=f'file://{rs.getHelpfile(uid)}'
         )

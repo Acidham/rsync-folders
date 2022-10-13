@@ -10,7 +10,7 @@ config = Rs.getConfig()
 uid, name, source, target, action = Tools.getArgv(1).split("|")
 msg: str = ''
 
-if action == "ADD":
+if action == "ADD" or action == "SEARCH_ADD":
     Rs.addEntry(name, source, target)
     msg = f'"{name}" added!'
 

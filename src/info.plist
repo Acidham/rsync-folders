@@ -34,6 +34,32 @@
 				<false/>
 			</dict>
 		</array>
+		<key>2989DB38-0EA7-4518-9295-F44265E7A353</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>EA9A65B5-FBD7-4B5D-8A69-0CC9CD2017AD</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>2A2EA53F-6723-4B5E-893A-1D0A58DFBA0F</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>5AA1A9FD-1039-4E9A-B393-BD824984DBCF</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>430DC473-DF94-4B22-BA7D-85F2749148E4</key>
 		<array>
 			<dict>
@@ -60,11 +86,37 @@
 				<false/>
 			</dict>
 		</array>
+		<key>5AA1A9FD-1039-4E9A-B393-BD824984DBCF</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>2989DB38-0EA7-4518-9295-F44265E7A353</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>67518518-A5CF-43A5-B141-81106FDB7B29</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
 				<string>4A4AC872-88D0-439A-9B51-F463348654EA</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>69A56460-BCA0-4E7C-AC44-5B55E9640FEA</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>2A2EA53F-6723-4B5E-893A-1D0A58DFBA0F</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -96,6 +148,18 @@
 				<string></string>
 				<key>sourceoutputuid</key>
 				<string>085C93F6-EB37-466E-83D9-37691EFA4974</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>69A56460-BCA0-4E7C-AC44-5B55E9640FEA</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>372031D4-3146-4734-A343-E8BF68571421</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -493,7 +557,7 @@
 				<key>fixedorder</key>
 				<true/>
 				<key>items</key>
-				<string>[{"imagefile":"ff97c1c91535ec0ce514a89771b42cb72a80054d.png","title":"Run","arg":"exec","subtitle":"Run sync setting"},{"imagefile":"6f9260d52d829403a16e01d6b359c4cffdb87011.png","title":"Add","arg":"add","subtitle":"Add sync setting"},{"imagefile":"39846b126735c587ac31ca23f095119cc81014f9.png","title":"Delete","subtitle":"Delete sync setting"}]</string>
+				<string>[{"imagefile":"ff97c1c91535ec0ce514a89771b42cb72a80054d.png","title":"Run","arg":"exec","subtitle":"Run sync setting"},{"imagefile":"6f9260d52d829403a16e01d6b359c4cffdb87011.png","title":"Add","arg":"add","subtitle":"Add sync setting"},{"imagefile":"6f9260d52d829403a16e01d6b359c4cffdb87011.png","title":"Search&amp;Add","arg":"search_add","subtitle":"Search  folder in Alfred and add"},{"imagefile":"39846b126735c587ac31ca23f095119cc81014f9.png","title":"Delete","subtitle":"Delete sync setting"}]</string>
 				<key>keyword</key>
 				<string>rsync</string>
 				<key>matchmode</key>
@@ -556,11 +620,25 @@
 						<key>matchmode</key>
 						<integer>0</integer>
 						<key>matchstring</key>
+						<string>search_add</string>
+						<key>outputlabel</key>
+						<string>SEARCH_ADD</string>
+						<key>uid</key>
+						<string>085C93F6-EB37-466E-83D9-37691EFA4974</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
 						<string>add</string>
 						<key>outputlabel</key>
 						<string>ADD</string>
 						<key>uid</key>
-						<string>085C93F6-EB37-466E-83D9-37691EFA4974</string>
+						<string>372031D4-3146-4734-A343-E8BF68571421</string>
 					</dict>
 				</array>
 				<key>elselabel</key>
@@ -572,6 +650,23 @@
 			<string>alfred.workflow.utility.conditional</string>
 			<key>uid</key>
 			<string>7645B3DA-583E-47C2-83BA-DC4FD8432EEB</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>DE49AD21-9430-4196-B3BA-383061F24A43</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -827,23 +922,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argument</key>
-				<string></string>
-				<key>passthroughargument</key>
-				<false/>
-				<key>variables</key>
-				<dict/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.argument</string>
-			<key>uid</key>
-			<string>DE49AD21-9430-4196-B3BA-383061F24A43</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>acceptsfiles</key>
 				<true/>
 				<key>acceptsmulti</key>
@@ -865,25 +943,40 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
+				<key>argumenttype</key>
 				<integer>0</integer>
-				<key>script</key>
-				<string></string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string>rsync_config.py</string>
-				<key>type</key>
-				<integer>8</integer>
+				<key>subtext</key>
+				<string>Add Source Path</string>
+				<key>text</key>
+				<string>Source Path</string>
+				<key>withspace</key>
+				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.script</string>
+			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
-			<string>F49DACAA-9991-41FC-B17A-2493F92ECB03</string>
+			<string>2A2EA53F-6723-4B5E-893A-1D0A58DFBA0F</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>subtext</key>
+				<string>Add Target Path</string>
+				<key>text</key>
+				<string>Target Path</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>2989DB38-0EA7-4518-9295-F44265E7A353</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -924,6 +1017,66 @@
 			<string>A488CAAE-6A5D-4A4B-82B1-81B20558C49A</string>
 			<key>version</key>
 			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>69A56460-BCA0-4E7C-AC44-5B55E9640FEA</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict>
+					<key>source</key>
+					<string>{query}</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>5AA1A9FD-1039-4E9A-B393-BD824984DBCF</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string></string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string>rsync_config.py</string>
+				<key>type</key>
+				<integer>8</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>F49DACAA-9991-41FC-B17A-2493F92ECB03</string>
+			<key>version</key>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1137,6 +1290,20 @@ Syncs Source and target folders from list of pre-defined source/target folder pa
 			<key>ypos</key>
 			<real>280</real>
 		</dict>
+		<key>2989DB38-0EA7-4518-9295-F44265E7A353</key>
+		<dict>
+			<key>xpos</key>
+			<real>890</real>
+			<key>ypos</key>
+			<real>560</real>
+		</dict>
+		<key>2A2EA53F-6723-4B5E-893A-1D0A58DFBA0F</key>
+		<dict>
+			<key>xpos</key>
+			<real>640</real>
+			<key>ypos</key>
+			<real>555</real>
+		</dict>
 		<key>430DC473-DF94-4B22-BA7D-85F2749148E4</key>
 		<dict>
 			<key>xpos</key>
@@ -1158,6 +1325,13 @@ Syncs Source and target folders from list of pre-defined source/target folder pa
 			<key>ypos</key>
 			<real>280</real>
 		</dict>
+		<key>5AA1A9FD-1039-4E9A-B393-BD824984DBCF</key>
+		<dict>
+			<key>xpos</key>
+			<real>820</real>
+			<key>ypos</key>
+			<real>590</real>
+		</dict>
 		<key>6026C421-22D8-41D8-B3FA-41BC9CB1E077</key>
 		<dict>
 			<key>xpos</key>
@@ -1171,6 +1345,13 @@ Syncs Source and target folders from list of pre-defined source/target folder pa
 			<real>885</real>
 			<key>ypos</key>
 			<real>160</real>
+		</dict>
+		<key>69A56460-BCA0-4E7C-AC44-5B55E9640FEA</key>
+		<dict>
+			<key>xpos</key>
+			<real>540</real>
+			<key>ypos</key>
+			<real>570</real>
 		</dict>
 		<key>7645B3DA-583E-47C2-83BA-DC4FD8432EEB</key>
 		<dict>
@@ -1219,7 +1400,7 @@ Syncs Source and target folders from list of pre-defined source/target folder pa
 			<key>xpos</key>
 			<real>805</real>
 			<key>ypos</key>
-			<real>585</real>
+			<real>700</real>
 		</dict>
 		<key>A488CAAE-6A5D-4A4B-82B1-81B20558C49A</key>
 		<dict>
@@ -1240,14 +1421,14 @@ Syncs Source and target folders from list of pre-defined source/target folder pa
 			<key>xpos</key>
 			<real>645</real>
 			<key>ypos</key>
-			<real>565</real>
+			<real>680</real>
 		</dict>
 		<key>CD4553E6-DF4D-4EBC-A37A-137DF801D01C</key>
 		<dict>
 			<key>xpos</key>
-			<real>540</real>
+			<real>545</real>
 			<key>ypos</key>
-			<real>595</real>
+			<real>710</real>
 		</dict>
 		<key>D71FD347-8255-45AE-BD43-76963428AC51</key>
 		<dict>
@@ -1261,12 +1442,12 @@ Syncs Source and target folders from list of pre-defined source/target folder pa
 			<key>xpos</key>
 			<real>540</real>
 			<key>ypos</key>
-			<real>310</real>
+			<real>265</real>
 		</dict>
 		<key>EA9A65B5-FBD7-4B5D-8A69-0CC9CD2017AD</key>
 		<dict>
 			<key>xpos</key>
-			<real>1055</real>
+			<real>1075</real>
 			<key>ypos</key>
 			<real>310</real>
 		</dict>
@@ -1275,7 +1456,7 @@ Syncs Source and target folders from list of pre-defined source/target folder pa
 			<key>xpos</key>
 			<real>1500</real>
 			<key>ypos</key>
-			<real>565</real>
+			<real>680</real>
 		</dict>
 		<key>FFB2A598-38BA-49E3-AC49-6CE257276CCF</key>
 		<dict>
@@ -1286,7 +1467,7 @@ Syncs Source and target folders from list of pre-defined source/target folder pa
 			<key>xpos</key>
 			<real>645</real>
 			<key>ypos</key>
-			<real>820</real>
+			<real>935</real>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
@@ -1294,7 +1475,7 @@ Syncs Source and target folders from list of pre-defined source/target folder pa
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>1.4</string>
+	<string>1.4.1</string>
 	<key>webaddress</key>
 	<string></string>
 </dict>

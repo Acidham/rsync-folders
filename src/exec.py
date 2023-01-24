@@ -46,7 +46,7 @@ if uid == "-ALL-":
         target = c["target"]
         result = rsync(source, target)
         match = re.search("Number of files transferred (\d+)", result)
-        file_count += int(match.group(1))
+        file_count += int(match.group(1)) if match != None else 0
         write_log(source, target, result)
 else:
     for c in config:
@@ -55,8 +55,7 @@ else:
             target = c["target"]
             result = rsync(source, target)
             match = re.search("Number of files transferred: (\d+)", result)
-            mg = int(match.group(1))
-            file_count += mg
+            file_count += int(match.group(1)) if match != None else 0
             write_log(source, target, result)
 
 

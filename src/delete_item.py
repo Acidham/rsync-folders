@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from Alfred3 import Items, Tools
+from Alfred3 import Items
 from Rsync import Config
 
 rs = Config()

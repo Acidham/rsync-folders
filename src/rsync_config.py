@@ -2,7 +2,7 @@
 
 import sys
 
-from Alfred3 import Items, Tools
+from Alfred3 import Tools
 from Rsync import Config
 
 Rs = Config()

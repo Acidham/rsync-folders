@@ -7,30 +7,57 @@ import sys
 from Alfred3 import Tools
 from Rsync import Config
 
+TMP_FILE = "/tmp/rsync_log.txt"
+
+# Remove log file when exists
+if os.path.exists(TMP_FILE):
+    os.remove(TMP_FILE)
+
+# write stats to log files
+
+
+def write_log(source, target, txt):
+    with open(TMP_FILE, "a") as f:
+        head = f"{source} -> {target}"
+        f.write(head)
+        f.write("\n")
+        f.write("=" * len(head))
+        f.write("\n")
+        f.write(txt)
+        f.write("\n")
+
+# rsync source to target
+
 
 def rsync(source: str, target: str) -> int:
-    cmd = f'rsync -rtvuc --delete-after --ignore-errors "{source}/" "{target}/" --stats | grep "Number of files transferred"'
+    cmd = f'rsync -rtvuc --delete-after --ignore-errors "{source}/" "{target}/" --stats'
     res = os.popen(cmd).read()
-    output = re.sub("[^0-9]", "", res)
-    return int(output)
+    return (res)
 
 
 uid = Tools.getArgv(1)
 
 rs = Config()
 config = rs.getConfig()
-result = 0
+file_count = 0
 if uid == "-ALL-":
     for c in config:
         source = c["source"]
         target = c["target"]
-        result = result + rsync(source, target)
+        result = rsync(source, target)
+        match = re.search("Number of files transferred (\d+)", result)
+        file_count += int(match.group(1))
+        write_log(source, target, result)
 else:
     for c in config:
         if c["uid"] == uid:
             source = c["source"]
             target = c["target"]
-            result = int(rsync(source, target))
+            result = rsync(source, target)
+            match = re.search("Number of files transferred: (\d+)", result)
+            mg = int(match.group(1))
+            file_count += mg
+            write_log(source, target, result)
 
 
-sys.stdout.write(str(result))
+sys.stdout.write(str(file_count))

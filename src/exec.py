@@ -44,18 +44,25 @@ if uid == "-ALL-":
     for c in config:
         source = c["source"]
         target = c["target"]
-        result = rsync(source, target)
-        match = re.search("Number of files transferred (\d+)", result)
-        file_count += int(match.group(1)) if match != None else 0
+        if os.path.exists(source) and os.path.exists(target):
+            result = rsync(source, target)
+            match = re.search("Number of files transferred (\d+)", result)
+            file_count += int(match.group(1)) if match != None else 0
+        else:
+            result = "ERROR: one or both were not found!"
         write_log(source, target, result)
 else:
     for c in config:
         if c["uid"] == uid:
             source = c["source"]
             target = c["target"]
-            result = rsync(source, target)
-            match = re.search("Number of files transferred: (\d+)", result)
-            file_count += int(match.group(1)) if match != None else 0
+            if os.path.exists(source) and os.path.exists(target):
+                result = rsync(source, target)
+                match = re.search("Number of files transferred: (\d+)", result)
+                file_count += int(match.group(1)) if match != None else 0
+                write_log(source, target, result)
+            else:
+                result = "ERROR: one or both were not found!"
             write_log(source, target, result)
 
 
